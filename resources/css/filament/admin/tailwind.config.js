@@ -1,6 +1,6 @@
 import preset from '../../../../vendor/filament/filament/tailwind.config.preset.js'
 import buildColors from "../../common/buildColors.js"
-import buildGradients from '../../common/buildGradients.js'
+import { barGradientPlugin, radialGradientPlugin } from '../../common/buildGradients.js'
 
 export default {
     presets: [preset],
@@ -35,6 +35,7 @@ export default {
         },
     },
     plugins: [
-        buildGradients,
+        barGradientPlugin,
+        radialGradientPlugin,
     ]
 }

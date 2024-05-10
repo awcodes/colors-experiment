@@ -25,6 +25,13 @@ class BrandColors
             'bg-gradient-bars-gray' => 'bg-gradient-bars-gray',
             'bg-gradient-bars-neutral-light' => 'bg-gradient-bars-neutral-light',
             'bg-gradient-bars-neutral-dark' => 'bg-gradient-bars-neutral-dark',
+            'bg-gradient-radial-primary' => 'bg-gradient-radial-primary',
+            'bg-gradient-radial-secondary' => 'bg-gradient-radial-secondary',
+            'bg-gradient-radial-tertiary' => 'bg-gradient-radial-tertiary',
+            'bg-gradient-radial-accent' => 'bg-gradient-radial-accent',
+            'bg-gradient-radial-gray' => 'bg-gradient-radial-gray',
+            'bg-gradient-radial-neutral-light' => 'bg-gradient-radial-neutral-light',
+            'bg-gradient-radial-neutral-dark' => 'bg-gradient-radial-neutral-dark',
         ];
     }
 }

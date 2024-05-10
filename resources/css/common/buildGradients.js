@@ -1,7 +1,6 @@
 const plugin = require('tailwindcss/plugin')
 
-const buildGradient = (key) => {
-
+const buildBarGradient = (key) => {
     let shade = key === 'gray' ? 300 : 600
     let bgShade = key === 'gray' ? 100 : 400
 
@@ -25,14 +24,18 @@ const buildGradient = (key) => {
         rgba(var(--${key}-${shade}), .9) 79%,
         rgba(var(--${key}-${shade}), .9) 88%,
         rgba(var(--${key}-${shade}), .9) 100%
-    ), linear-gradient(to right, rgba(var(--${key}-${bgShade}), 1), rgba(var(--${key}-${bgShade}), 1));`
+    ), linear-gradient(to right, rgba(var(--${key}-${bgShade}), 1), rgba(var(--${key}-${bgShade}), 1))`
 }
 
-module.exports = plugin(function ({ matchUtilities, theme }) {
+const buildRadialGradient = (key, insideShade = 500, outsideShade = 800) => {
+    return `radial-gradient(rgba(var(--${key}-${insideShade}), 1), rgba(var(--${key}-${outsideShade}), 1))`
+}
+
+const barGradientPlugin = plugin(function ({ matchUtilities, theme }) {
     matchUtilities(
         {
             'bg-gradient-bars': (value) => ({
-                background: buildGradient(value)
+                background: buildBarGradient(value)
             })
         },
         {
@@ -40,3 +43,23 @@ module.exports = plugin(function ({ matchUtilities, theme }) {
         }
     )
 })
+
+const radialGradientPlugin = plugin.withOptions(function (options = {}) {
+    return function ({matchUtilities, theme}) {
+        matchUtilities(
+            {
+                'bg-gradient-radial': (value) => ({
+                    background: buildRadialGradient(value, options?.insideShade, options?.outsideShade)
+                })
+            },
+            {
+                values: theme('gradientColors')
+            }
+        )
+    }
+})
+
+module.exports = {
+    barGradientPlugin,
+    radialGradientPlugin
+}

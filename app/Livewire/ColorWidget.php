@@ -7,13 +7,15 @@ use Awcodes\PresetColorPicker\PresetColorPicker;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
-use Filament\Support\Facades\FilamentColor;
-use Illuminate\Contracts\View\View;
-use Livewire\Component;
+use Filament\Widgets\Widget;
 
-class Sink extends Component implements HasForms
+class ColorWidget extends Widget implements HasForms
 {
     use InteractsWithForms;
+
+    protected static string $view = 'livewire.color-widget';
+
+    protected int | string | array $columnSpan = 2;
 
     public ?array $data = [];
 
@@ -31,11 +33,12 @@ class Sink extends Component implements HasForms
                 ->withWhite()
                 ->withBlack()
                 ->colors(BrandColors::get())
+                ->extraInputAttributes(['class' => 'branded'])
         ]);
     }
 
-    public function render(): View
+    public function submit(): void
     {
-        return view('livewire.sink');
+        dd($this->form->getState());
     }
 }

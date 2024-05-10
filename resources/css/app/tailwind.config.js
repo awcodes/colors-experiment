@@ -1,5 +1,5 @@
 import brand from '../common/brand.js'
-import buildGradients from '../common/buildGradients.js'
+import { barGradientPlugin, radialGradientPlugin } from '../common/buildGradients.js'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -30,7 +30,8 @@ export default {
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
-        buildGradients,
+        barGradientPlugin,
+        radialGradientPlugin,
     ],
 }
 
